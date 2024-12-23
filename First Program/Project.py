@@ -76,7 +76,7 @@ def mouseListener(button, state, x, y):
                 glutLeaveMainLoop()
     glutPostRedisplay()
 def draw_points(x, y):
-    glPointSize(2) #pixel size. by default 1
+    
     glBegin(GL_POINTS)
     glVertex2f(x,y) #jekhane show korbe pixel
     glEnd()
@@ -224,11 +224,13 @@ def draw_circles(cx,cy,r):
 
 def draw_cross_button():
     glColor3f(0.8, 0.3, 0.3)
+    glPointSize(3)
     draw_line((215,245),(245,215))
     draw_line((215,215),(245,245))
     glColor3f(1, 1, 1)
 
 def draw_pause_button():
+    glPointSize(3)
     global pause
     if pause==False:
         glColor3f(0.3, 0.3, 0.8)
@@ -242,14 +244,30 @@ def draw_pause_button():
         draw_line((15,210),(15,245))
         glColor3f(1, 1, 1)
 
+maze=[[-120,145,-60,145],[-60,145,-60,90],[-60,90,-120,90],
+      [-250,35,-120,35],[180,145,250,145],[180,35,250,35],
+      [60,145,120,145],[120,145,120,90],[60,35,60,-20],[60,-20,120,-20],
+      [0,-75,60,-75],[60,-75,60,-185],
+      [-120,-130,0,-130],[-120,-130,-120,-185],[0,-130,0,-185],
+      [-60,-240,-60,-185],[120,-185,180,-185]
+      ]
+def draw_maze():
+    glPointSize(5)
+    glColor3f(0.4, 0.3, 0.2)
+    global maze
+    for i in maze:
+            glPointSize(7)
+            draw_line((i[0],i[1]),(i[2],i[3]))
+        
+    glColor3f(1, 1, 1)
 
 def draw_reset_button():
-    glColor3f(0.3, 0.8, 0.3)
-    draw_line((-205,230),(-245,230))
-    draw_line((-245,230),(-230,245))
-    draw_line((-245,230),(-230,215))
-    #draw_line((12,230),(-12,245))
+    glColor3f(0.3, 0.8, 0.2)
+    glPointSize(2)
+    draw_line((-250,200),(250,200))
+    
     glColor3f(1, 1, 1)
+
 
 def display():
     
@@ -269,6 +287,7 @@ def display():
     draw_pause_button()
     draw_cross_button()
     draw_reset_button()
+    draw_maze()
     glutSwapBuffers()
 
 def reset():
