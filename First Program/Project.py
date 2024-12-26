@@ -245,15 +245,34 @@ def draw_pause_button():
         glColor3f(1, 1, 1)
 
 maze=[[-120,145,-60,145],[-60,145,-60,90],[-60,90,-120,90],
-      [-250,35,-120,35],[180,145,250,145],[180,35,250,35],
-      [60,145,120,145],[120,145,120,90],[60,35,60,-20],[60,-20,120,-20],
-      [0,-75,60,-75],[60,-75,60,-185],
-      [-120,-130,0,-130],[-120,-130,-120,-185],[0,-130,0,-185],
-      [-60,-240,-60,-185],[120,-185,180,-185]
+      [-250,35,-125,35],[180,145,250,145],[180,35,250,35],
+      [60,145,120,145],[120,145,120,90],[60,30,60,-20],[60,-20,115,-20],
+      [0,-75,60,-75],[60,-75,60,-190],
+      [-120,-135,0,-135],[-120,-135,-120,-190],[0,-135,0,-190],
+      [-60,-250,-60,-195],[120,-190,180,-190]
       ]
+def draw_blocks():
+    x=-210
+    
+    glPointSize(65)
+    tile=True
+    
+    for i in range(8):
+        y=172
+        tile=(not tile)
+        for j in range(8):
+            if (tile==True):
+                glColor3f(0.92,0.68,0.26)
+                tile=False
+            else:
+                glColor3f(0.66,0.43,0.03)
+                tile=True
+            draw_points(x,y)
+            y-=57
+        x+=60
 def draw_maze():
-    glPointSize(5)
-    glColor3f(0.4, 0.3, 0.2)
+    glPointSize(3)
+    glColor3f(0,0,0)
     global maze
     for i in maze:
             glPointSize(7)
@@ -264,7 +283,6 @@ def draw_maze():
 def draw_reset_button():
     glColor3f(0.3, 0.8, 0.2)
     glPointSize(2)
-    draw_line((-250,200),(250,200))
     
     glColor3f(1, 1, 1)
 
@@ -287,6 +305,7 @@ def display():
     draw_pause_button()
     draw_cross_button()
     draw_reset_button()
+    draw_blocks()
     draw_maze()
     glutSwapBuffers()
 
