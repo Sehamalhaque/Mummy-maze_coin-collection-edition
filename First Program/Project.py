@@ -534,7 +534,7 @@ glutInitWindowSize(W_Width, W_Height)
 glutInitWindowPosition(0, 0)
 glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGB) #	//Depth, Double buffer, RGB color
 # glutCreateWindow("My OpenGL Program")
-wind = glutCreateWindow(b"OpenGL Coding Practice")
+wind = glutCreateWindow(b"CSE423 Final Project")
 init()
 glutDisplayFunc(display)	#display callback function
 glutIdleFunc(animate)	#what you want to do in the idle time (when no drawing is occuring)
