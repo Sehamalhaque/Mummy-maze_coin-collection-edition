@@ -508,13 +508,17 @@ def pause_function():
     glutPostRedisplay()
     
 def animate(v=0):    #getting error if i dont give a perameter for animate() function
-    global death_zone_clr
+    global death_zone_clr,pause
 
-    death_zone_clr = not death_zone_clr
-    glutPostRedisplay()
+    
+   
+    if (pause==True):
+        None
+    else:
+        death_zone_clr = not death_zone_clr
 
     glutTimerFunc(20000, animate,0)  
-    None
+    glutPostRedisplay()
                     
     
 def init():
