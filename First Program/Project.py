@@ -13,7 +13,7 @@ circle_position = {"x": 207, "y": 177}
 target_position = {"x": 207, "y": 177}
 red_circle_position = {"x": -213, "y": -222}
 red_target_position = {"x": -213, "y": -222}
-
+death_zone_clr = True 
 animation_speed = 10 
 step1=57    #for y axis movement
 step2=60    #for x axis movement
@@ -442,11 +442,16 @@ def draw_maze():
         
     glColor3f(1, 1, 1)
 def draw_death_zone():
-    glPointSize(20)
-    glColor3f(0,0.8,0.5)
+    global death_zone_clr,death_zone_center
+    glPointSize(15)
+    
+    if death_zone_clr==True:
+        glColor3f(0.3,0.7,0.2)
+    else:
+        glColor3f(0.7,0.3,0.2)
     if len(death_zone_center)>0:
         for i in death_zone_center:
-            draw_circles(i[0],i[1],17)
+            draw_circles(i[0],i[1],15)
     glColor3f(1, 1, 1)
     glPointSize(7)
 def draw_restart_button():
@@ -502,8 +507,13 @@ def pause_function():
         animation_speed=10
     glutPostRedisplay()
     
-def animate():
-    #if len(death_zone)>=5:
+def animate(v=0):    #getting error if i dont give a perameter for animate() function
+    global death_zone_clr
+
+    death_zone_clr = not death_zone_clr
+    glutPostRedisplay()
+
+    glutTimerFunc(20000, animate,0)  
     None
                     
     
