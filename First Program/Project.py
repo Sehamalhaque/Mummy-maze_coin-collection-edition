@@ -59,7 +59,7 @@ def restart():
     death_zone_center=[]
     coin_pos = random.sample(range(63), 5)
     coin_centers = [centers[i] for i in coin_pos]
-    time.sleep(2)
+    time.sleep(1)
     print("Game has restarted")
     print("Point: ",score)
 def path_crosses_wall(x1, y1, x2, y2):
@@ -446,9 +446,9 @@ def draw_death_zone():
     glPointSize(15)
     
     if death_zone_clr==True:
-        glColor3f(0.3,0.7,0.2)
+        glColor3f(0.2,0.5,0)  
     else:
-        glColor3f(0.7,0.3,0.2)
+        glColor3f(0.7,0.2,0.2)   #Red
     if len(death_zone_center)>0:
         for i in death_zone_center:
             draw_circles(i[0],i[1],15)
@@ -510,8 +510,6 @@ def pause_function():
 def animate(v=0):    #getting error if i dont give a perameter for animate() function
     global death_zone_clr,pause
 
-    
-   
     if (pause==True):
         None
     else:
